@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import upload from "../../assets/uploadSVG.svg";
 import BarLoader from "../BarLoader/BarLoader";
+
+const key = import.meta.env.VITE_API_KEY;
 const Plant = () => {
   const [plantFile, setPlantFile] = useState<any>(null);
   const [fetching, setFetching] = useState(false);
@@ -8,10 +10,9 @@ const Plant = () => {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [data, setData] = useState<any[]>([]);
 
-
   async function FetchData() {
     const data = {
-      api_key: "ZjaUTlGyEQz024sZM4BYAUIfJT5cwuHwBzkoqrKMwkGOpTsZ76",
+      api_key: key,
       images: [plantFile.slice(23)],
       modifiers: ["crops_fast", "similar_images"],
       plant_language: "en",
@@ -139,6 +140,7 @@ const Plant = () => {
             className="btn bg-green-700 mt-2 w-full text-white rounded-none"
             disabled={plantFile == null || fetching}
             onClick={FetchData}
+            
           >
             {fetching ? <BarLoader /> : "Fetch"}
           </button>
