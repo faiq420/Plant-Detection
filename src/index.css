@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 216, 170, 213;
+  --background-end-rgb: 255, 255, 255;
+  border-radius: none;
+  margin: 0px;
+  padding: 0px;
+} */
+
+::selection {
+  background-color: #69829a !important;
+  color: white !important;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  overflow: auto;
+  height: 100vh !important;
+  color:#000
+}
+* {
+  user-select: auto !important;
+}
+#root {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  max-width: 100vw !important;
+  flex: 1 1 0;
+  text-align: start;
+}
+
+/* fonts */
+.font-outfit {
+  font-family: "Outfit", sans-serif;
+}
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.font-crete {
+  font-family: "Crete Round", serif;
+}
+
+.font-roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.font-DMSans {
+  font-family: "DM Sans", sans-serif;
+}
+
+.font-inter {
+  font-family: "Inter", sans-serif;
+}
+
+.font-raleway {
+  font-family: "Raleway", sans-serif;
+}
+
+/* fonts */
+
+.loginBg {
+  background-image: url("./assets/tropical-green-leaves-background.jpg"); 
+  background-repeat: no-repeat; 
+  background-size: cover;
+}
