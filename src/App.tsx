@@ -1,12 +1,25 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Plant from "./components/Plant/Plant";
+import Home from "./Screens/Home";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import DetectDisease from "./Screens/DetectDisease";
+import IdentifyPlant from "./Screens/IdentifyPlant";
 
 function App() {
   return (
     <div className="App h-full">
-      <Plant />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/DetectDisease" element={<DetectDisease />} />
+          <Route path="/IdentifyPlant" element={<IdentifyPlant />} />
+          {/* <Route path="*" element={<NotFound />} /> */}
+        </Routes>
+      </BrowserRouter>
+      <Footer />
     </div>
   );
 }

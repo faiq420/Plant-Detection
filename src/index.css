@@ -24,7 +24,7 @@ body {
   text-align: left;
   overflow: auto;
   height: 100vh !important;
-  color:#000
+  color: #000;
 }
 * {
   user-select: auto !important;
@@ -69,7 +69,12 @@ body {
 /* fonts */
 
 .loginBg {
-  background-image: url("./assets/tropical-green-leaves-background.jpg"); 
-  background-repeat: no-repeat; 
+  background-image: url("./assets/tropical-green-leaves-background.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
+}
+
+.about-icon i {
+  font-size: 40px;
+  @apply text-green-900;
 }
