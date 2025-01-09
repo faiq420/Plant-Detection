@@ -4,13 +4,23 @@ export default {
   theme: {
     extend: {
       keyframes: {
-        slideOutRight: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(100%)" },
+        slideInFromLeft: {
+          "0%": { transform: "translateX(-100%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        slideInFromRight: {
+          "0%": { transform: "translateX(100%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        popIn: {
+          "0%": { transform: "scale(0)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1" },
         },
       },
       animation: {
-        slideOutRight: "slideOutRight 0.5s ease-in-out forwards",
+        slideInFromLeft: "slideInFromLeft 1s ease-out",
+        slideInFromRight: "slideInFromRight 1s ease-out",
+        popIn: "popIn 0.5s ease-out",
       },
       fontFamily: {
         poppins: "var(--font-poppins)",

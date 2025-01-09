@@ -19,7 +19,7 @@ const Header = () => {
         <span>AgriVision</span>
       </div>
       <nav>
-        <ul className="flex space-x-4">
+        <ul className="flex space-x-4 text-sm ">
           <li className="relative group">
             <Link to="/IdentifyPlant" className="pb-4 text-white">
               Identify Vegetation
