@@ -16,11 +16,16 @@ export default {
           "0%": { transform: "scale(0)", opacity: "0" },
           "100%": { transform: "scale(1)", opacity: "1" },
         },
+        slideInFromTop: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(0)" },
+        },
       },
       animation: {
         slideInFromLeft: "slideInFromLeft 1s ease-out",
         slideInFromRight: "slideInFromRight 1s ease-out",
         popIn: "popIn 0.5s ease-out",
+        slideInFromTop: "slideInFromTop 0.6s ease-out",
       },
       fontFamily: {
         poppins: "var(--font-poppins)",
