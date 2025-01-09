@@ -68,8 +68,19 @@ body {
 
 /* fonts */
 
-.loginBg {
+.mainBg {
   background-image: url("./assets/tropical-green-leaves-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.plantsBg {
+  background-image: url("./assets/fruitsandvegies.avif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #00000050;
+}
+.diseaseBg {
+  background-image: url("./assets/PestedLeave.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
