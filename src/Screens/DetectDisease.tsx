@@ -67,7 +67,7 @@ const DetectDisease = () => {
   return (
     <div className="diseaseBg h-full flex justify-center">
       {/* <div className="absolute inset-0 bg-gradient-to-r from-[#00000095] to-transparent h-screen"></div> */}
-      <div className="bg-white rounded-lg p-4 m-2 w-full md:w-8/12">
+      <div className="bg-white h-max rounded-lg p-4 m-2 w-full md:w-8/12">
         <h3 className="text-center text-2xl font-medium font-poppins">
           Detect Plant Disease
         </h3>
@@ -110,7 +110,7 @@ const DetectDisease = () => {
           </button>
         </div>
 
-        <div className="h-[300px] overflow-y-auto mt-4 w-full md:w-10/12 mx-auto">
+        <div className="max-h-[300px] overflow-y-auto mt-4 w-full md:w-10/12 mx-auto">
           <div className="flex justify-center">
             {imagePreview && (
               <img
