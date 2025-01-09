@@ -66,8 +66,8 @@ const IdentifyPlant = () => {
 
   return (
     <div className="plantsBg h-full flex justify-center">
-      <div className="absolute inset-0 bg-gradient-to-r from-[#00000095] to-transparent"></div>
-      <div className="bg-white rounded-lg p-4 m-2 w-full md:w-8/12 z-50">
+      {/* <div className="absolute inset-0 bg-gradient-to-r from-[#00000095] to-transparent"></div> */}
+      <div className="bg-white rounded-lg p-4 m-2 w-full md:w-8/12">
         <h3 className="text-center text-2xl font-medium font-poppins">
           Plants Identification
         </h3>
