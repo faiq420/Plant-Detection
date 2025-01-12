@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import upload from "../../src/assets/uploadSVG.svg";
 import BarLoader from "../components/BarLoader/BarLoader";
+import WebcamCapture from "../components/WebcamCapture";
 
 // const key = import.meta.env.VITE_API_KEY;
 const IdentifyPlant = () => {
@@ -9,7 +10,7 @@ const IdentifyPlant = () => {
   const [fileName, setFileName] = useState<string | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [plantName, setPlantName] = useState<string | null>(null);
-
+  const [openWebCam, setOpenWebCam] = useState(false);
   async function FetchData() {
     const formData = new FormData();
     formData.append("file", plantFile as File);
@@ -64,6 +65,30 @@ const IdentifyPlant = () => {
     fileInput.click();
   };
 
+  const handleWebcamToggle = () => {
+    setOpenWebCam(!openWebCam);
+  };
+
+  const fetchCamResponse = (img: any) => {
+    const fileName = "uploaded_file.jpg";
+    const file = base64ToFile(img, fileName);
+    setPlantFile(file);
+    setFileName(fileName);
+    setImagePreview(img);
+    setOpenWebCam(false);
+  };
+
+  const base64ToFile = (base64String: string, fileName: string): File => {
+    const byteString = atob(base64String.split(",")[1]);
+    const mimeType = base64String.split(",")[0].split(":")[1].split(";")[0];
+    const byteArray = new Uint8Array(byteString.length);
+    for (let i = 0; i < byteString.length; i++) {
+      byteArray[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([byteArray], { type: mimeType });
+    return new File([blob], fileName, { type: mimeType });
+  };
+
   return (
     <div className="plantsBg h-full flex justify-center">
       {/* <div className="absolute inset-0 bg-gradient-to-r from-[#00000095] to-transparent"></div> */}
@@ -71,8 +96,8 @@ const IdentifyPlant = () => {
         <h3 className="text-center text-2xl font-medium font-poppins">
           Plants Identification
         </h3>
-        <div className="w-full md:w-7/12 mx-auto">
-          <div className="w-full mt-4 grid grid-cols-2 gap-2">
+        <div className="w-full md:w-9/12 mx-auto">
+          <div className="w-full mt-4 grid grid-cols-[30%_30%_40%]">
             <input
               id="file-input"
               type="file"
@@ -82,10 +107,19 @@ const IdentifyPlant = () => {
             />
             <button
               onClick={handleButtonClick}
-              className="relative btn bg-green-700 text-white rounded-none"
+              className="relative btn bg-green-700 text-white rounded-none mb-2 md:mb-0 md:mr-2"
             >
               <img src={upload} alt="Upload Icon" className="h-5 w-5" />
               Upload
+            </button>
+            <button
+              onClick={handleWebcamToggle}
+              className="relative flex flex-col btn bg-green-700 text-white rounded-none mb-2 md:mb-0 md:mr-2"
+            >
+              <span>
+                <i className="fa fa-camera text-[20px] text-white mr-2"></i>
+                {openWebCam ? "Close" : "Open"} Webcam
+              </span>
             </button>
 
             <button
@@ -100,6 +134,7 @@ const IdentifyPlant = () => {
               Discard File
             </button>
           </div>
+          {openWebCam && <WebcamCapture sendWebcamImage={fetchCamResponse} />}
 
           <button
             className="btn bg-green-700 mt-2 w-full text-white rounded-none"

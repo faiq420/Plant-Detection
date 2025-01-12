@@ -18,7 +18,7 @@ const Header = () => {
           alt="AgriVision Logo"
           className="h-8 w-auto mr-2"
         /> */}
-        <span>AgriVision</span>
+        <span className="font-CreteRound">AGRIVISION</span>
       </div>
       <nav>
         <ul className="flex space-x-4 text-sm ">

@@ -69,7 +69,7 @@ const DiseaseDetectionService = () => {
           animationEnded
             ? "md:opacity-100 md:translate-x-0"
             : "md:opacity-0 md:translate-x-[100%]"
-        } md:opacity-100 md:translate-x-0`} // Apply static visibility and position on mobile screens
+        } md:opacity-100 md:translate-x-0`}
         onAnimationEnd={handleAnimationEnd}
       >
         <p>
