@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import logo from '../assets/AgriVisionLogo.png'
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -13,12 +13,12 @@ const Header = () => {
           navigate("/");
         }}
       >
-        {/* <img
-          src="/path/to/AgriVision_Logo_With_Contrast.png"
+        <img
+          src={logo}
           alt="AgriVision Logo"
-          className="h-8 w-auto mr-2"
-        /> */}
-        <span className="font-CreteRound">AGRIVISION</span>
+          className="h-6 w-auto mr-2"
+        />
+        {/* <span className="font-CreteRound">AGRIVISION</span> */}
       </div>
       <nav>
         <ul className="flex space-x-4 text-sm ">
