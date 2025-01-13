@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from '../assets/AgriVisionLogo.png'
+import logo from '../assets/AgriVision.svg'
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
