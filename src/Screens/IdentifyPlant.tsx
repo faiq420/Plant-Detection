@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import upload from "../../src/assets/uploadSVG.svg";
 import BarLoader from "../components/BarLoader/BarLoader";
 import WebcamCapture from "../components/WebcamCapture";
-
+import axios from "axios";
 // const key = import.meta.env.VITE_API_KEY;
 const IdentifyPlant = () => {
   const [plantFile, setPlantFile] = useState<File | null>(null);
@@ -11,32 +11,27 @@ const IdentifyPlant = () => {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [plantName, setPlantName] = useState<string | null>(null);
   const [openWebCam, setOpenWebCam] = useState(false);
+
   async function FetchData() {
     const formData = new FormData();
     formData.append("file", plantFile as File);
-
+    console.log(plantFile);
     setFetching(true);
-    const url = "http://127.0.0.1:5000/predict";
-    fetch(url, {
-      method: "POST",
-      body: formData,
-    })
-      .then(async (response) => {
-        try {
-          const dataRes = await response.json();
-          console.log(dataRes);
+    const url =
+      "https://ba28-2400-adc1-4ac-7100-e48e-8254-77b4-5787.ngrok-free.app/predict";
 
-          setPlantName(dataRes?.prediction);
-          setFetching(false);
-        } catch (e) {
-          setFetching(false);
-          console.error(e);
-        }
-      })
-      .catch((e) => {
-        setFetching(false);
-        console.error(e);
+    try {
+      const response = await axios.post(url, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
+      setPlantName(response.data);
+    } catch (error: any) {
+      setPlantName(error.response.data.message);
+    } finally {
+      setFetching(false);
+    }
   }
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -78,15 +73,13 @@ const IdentifyPlant = () => {
     setOpenWebCam(false);
   };
 
-  const base64ToFile = (base64String: string, fileName: string): File => {
+  const base64ToFile = (base64String: string, fileName: string) => {
     const byteString = atob(base64String.split(",")[1]);
-    const mimeType = base64String.split(",")[0].split(":")[1].split(";")[0];
-    const byteArray = new Uint8Array(byteString.length);
+    const arrayBuffer = new Uint8Array(byteString.length);
     for (let i = 0; i < byteString.length; i++) {
-      byteArray[i] = byteString.charCodeAt(i);
+      arrayBuffer[i] = byteString.charCodeAt(i);
     }
-    const blob = new Blob([byteArray], { type: mimeType });
-    return new File([blob], fileName, { type: mimeType });
+    return new File([arrayBuffer], fileName, { type: "image/jpeg" });
   };
 
   return (
