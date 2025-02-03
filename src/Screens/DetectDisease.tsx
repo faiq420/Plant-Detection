@@ -3,7 +3,6 @@ import upload from "../../src/assets/uploadSVG.svg";
 import BarLoader from "../components/BarLoader/BarLoader";
 import WebcamCapture from "../components/WebcamCapture";
 import axios from "axios";
-// const key = import.meta.env.VITE_API_KEY;
 const DetectDisease = () => {
   const [plantFile, setPlantFile] = useState<File | null>(null);
   const [fetching, setFetching] = useState(false);
@@ -15,10 +14,9 @@ const DetectDisease = () => {
   async function FetchData() {
     const formData = new FormData();
     formData.append("file", plantFile as File);
-    console.log(plantFile);
     setFetching(true);
     const url =
-      "https://ba28-2400-adc1-4ac-7100-e48e-8254-77b4-5787.ngrok-free.app/predict";
+      "https://6e96-2400-adc1-4ac-7100-3917-b04b-e88d-fd2f.ngrok-free.app/predict";
 
     try {
       const response = await axios.post(url, formData, {

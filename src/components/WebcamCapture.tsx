@@ -46,7 +46,6 @@ const WebcamCapture = ({ sendWebcamImage }: Props) => {
           canvasRef.current.width,
           canvasRef.current.height
         );
-        console.log(canvasRef.current);
         const dataUri = canvasRef.current.toDataURL("image/jpeg");
         setCapturedImage(dataUri);
       }
@@ -59,7 +58,6 @@ const WebcamCapture = ({ sendWebcamImage }: Props) => {
       if (ctx) {
         ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
       }
-      console.log(canvasRef.current);
     }
   };
 

@@ -15,10 +15,9 @@ const IdentifyPlant = () => {
   async function FetchData() {
     const formData = new FormData();
     formData.append("file", plantFile as File);
-    console.log(plantFile);
     setFetching(true);
     const url =
-      "https://ba28-2400-adc1-4ac-7100-e48e-8254-77b4-5787.ngrok-free.app/predict";
+      "https://87a8-2400-adc1-4ac-7100-4101-81a-a40d-573c.ngrok-free.app/predict";
 
     try {
       const response = await axios.post(url, formData, {
@@ -26,7 +25,7 @@ const IdentifyPlant = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      setPlantName(response.data);
+      setPlantName(response.data.prediction);
     } catch (error: any) {
       setPlantName(error.response.data.message);
     } finally {
